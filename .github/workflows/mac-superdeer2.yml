@@ -20,13 +20,19 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pyinstaller
+          pip install --upgrade pyinstaller
 
       - name: Build with PyInstaller
-        run: pyinstaller --name "paiban" --collect-binaries ortools superdeer8.py
+        run: |
+          pyinstaller --windowed --no-sign \\\\
+            --name "paiban" \\\\
+            --collect-all ortools \\\\
+            --hidden-import ortools.sat.python.cp_model \\\\
+            superdeer8.py
 
       - name: Prepare folder and zip
         run: |
+          ls -la dist
           mkdir -p release
           cp -r dist/paiban.app release/
           cd release
