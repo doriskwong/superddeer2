@@ -23,12 +23,7 @@ jobs:
           pip install --upgrade pyinstaller
 
       - name: Build with PyInstaller
-        run: |
-          pyinstaller --windowed \\\\
-            --name "paiban" \\\\
-            --collect-all ortools \\\\
-            --hidden-import ortools.sat.python.cp_model \\\\
-            superdeer8.py
+        run: pyinstaller --windowed --name "paiban" --collect-all ortools --hidden-import ortools.sat.python.cp_model superdeer8.py
 
       - name: Prepare folder and zip
         run: |
