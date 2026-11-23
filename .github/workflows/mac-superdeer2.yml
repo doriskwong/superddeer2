@@ -23,17 +23,17 @@ jobs:
           pip install pyinstaller
 
       - name: Build with PyInstaller
-        run: pyinstaller --name "排班工具" --collect-binaries ortools superdeer8.py
+        run: pyinstaller --name "paiban" --collect-binaries ortools superdeer8.py
 
       - name: Prepare folder and zip
         run: |
           mkdir -p release
-          cp -r dist/排班工具.app release/
+          cp -r dist/paiban.app release/
           cd release
-          zip -r ../排班工具_苹果版.zip .
+          zip -r ../mac-paiban.zip .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: macos-app
-          path: 排班工具_苹果版.zip
+          path: mac-paiban.zip
