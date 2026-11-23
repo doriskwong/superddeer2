@@ -24,7 +24,7 @@ jobs:
 
       - name: Build with PyInstaller
         run: |
-          pyinstaller --windowed --no-sign \\\\
+          pyinstaller --windowed \\\\
             --name "paiban" \\\\
             --collect-all ortools \\\\
             --hidden-import ortools.sat.python.cp_model \\\\
